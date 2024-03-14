@@ -1,0 +1,104 @@
+body {
+    background-image: url(https://m.media-amazon.com/images/I/71kdhfUj1PL._AC_UF1000,1000_QL80_.jpg);
+  }
+#banner {
+    width: 65%;
+    max-width: 25rem;
+    display: block;
+    margin: 0 auto 0 auto;
+    padding-top: 0;
+}
+h1 {
+    text-align: center;
+    margin: 2% 0 0 0;
+    padding: 0;
+    color: #faf1d8;
+    font-family: 'Brush Script MT', 'Brush Script Std', cursive;
+    font-style: italic;
+    font-size: 300%;
+    font-weight: 100;
+}
+
+  #text {
+    background-image: linear-gradient(#ffffff, #ffffff, #8ecafc);
+    color: #000000;
+    padding: 10px;
+  }
+  
+  #game {
+    max-width: 550px;
+    max-height: 400px;
+    background-color: #000000;
+    color: #ffffff;
+    margin: 20px auto 0px;
+    padding: 10px;
+  }
+  
+  #controls,
+  #stats {
+    border: 1px solid #ffffff;
+    padding: 5px;
+    color: #ffffff;
+    text-align: center;
+  }
+  
+  #monsterStats {
+    display: none;
+    border: 1px solid #0a0a23;
+    padding: 5px;
+    color: #ffffff;
+    background-color: #c70d0d;
+  }
+
+  #win-img {
+    margin: 0 auto;
+    text-align: center;
+    padding: 0.5rem 29% 1rem 29%;
+    width: 600px;
+    display: none;
+}
+
+#leader, .follower {
+  margin: 0 auto;
+  display: none;
+}
+
+#leader {
+  width: 6rem;
+  height: 6rem;
+  padding-right: 3rem;
+}
+
+.follower {
+  width: 3rem;
+  height: 5rem;
+  padding: 0 1rem;
+}
+  .stat {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  #rank {
+    padding-right: 20px;
+  }
+  
+  button {
+    cursor: pointer;
+    color: #000000;
+    font-weight: 700;
+    background-color: #ffffff;
+    background-image: linear-gradient(#ffffff, #8ecafc);
+    border: 2px solid #ffffff;
+    width: 31%;
+  }
+
+  button:hover {
+    font-weight: 800;
+    background-image: linear-gradient(#8ecafc, #ffffff);
+    border: 1px solid #ffffff;
+  }
+
+  #controls {
+    text-align: center;
+  }
+  
