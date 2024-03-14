@@ -61,7 +61,7 @@ const locations = [
     {
       name: "truth",
       "button text": ["Fight independent thought", "Fight society", "Return to your yurt"],
-      "button functions": [fightThought, fightSociety, goYurt],
+      "button functions": [fightThought, winGame, goYurt],
       text: "You follow your truth, but it won't come easily."
     },
     {
@@ -80,7 +80,7 @@ const locations = [
       name: "lose",
       "button text": ["REPLAY?", "REPLAY?", "REPLAY?"],
       "button functions": [restart, restart, restart],
-      text: "You have displeased your leader. You are never heard from again &#x2620;"
+      text: "You have displeased your leader. You are never heard from again."
     },
     { 
       name: "win", 
@@ -134,9 +134,9 @@ button3.onclick = goYurt;
     
     //goYurt audio
     document.getElementById('yayaBeySnippet').pause();
-    document.getElementById('backgroundMusic').play();
     document.getElementById('windSounds').pause();
     document.getElementById('knifeSounds').pause();
+    document.getElementById('backgroundMusic').play();
     
     
 }
@@ -162,6 +162,8 @@ button3.onclick = goYurt;
       document.getElementById('coinSounds').play();
     } else {
       text.innerText = "You do not have enough goods to buy health.";
+      document.getElementById('oops').play();
+      document.getElementById('oops').volume = 0.2;
     }
   }
   
@@ -173,11 +175,26 @@ button3.onclick = goYurt;
         goodsText.innerText = goods;
         let newWeapon = weapons[currentWeapon].name;
         text.innerText = "You now have " + newWeapon + ".";
+        
+        // Update inventory text with proper grammar
         inventory.push(newWeapon);
-        text.innerText += " In your inventory you have: " + inventory;
+        if (inventory.length === 1) {
+          text.innerText += " In your inventory you have: " + inventory[0];
+        } else if (inventory.length === 2 ) {
+          text.innerText += " In your inventory you have: " + inventory.join(" and ");
+        } else if (inventory.length === 3) {
+          text.innerText += " In your inventory you have: " + inventory[0] + ", " + inventory[1] + ", " + inventory[2];
+        } else {
+          let lastWeapon = inventory.pop();
+          text.innerText += " In your inventory you have: " + inventory.join(", ") + ", plus " + lastWeapon;
+          inventory.push(lastWeapon);
+        }
+        
         document.getElementById('coinSounds').play();
       } else {
         text.innerText = "You do not have enough goods to buy a weapon.";
+        document.getElementById('oops').play();
+        document.getElementById('oops').volume = 0.2;
       }
     } else {
       text.innerText = "You already have the most powerful weapon!";
@@ -265,6 +282,9 @@ button3.onclick = goYurt;
   }
   
   function defeatMonster() {
+    document.getElementById('windSounds').pause();
+    document.getElementById('victory').play();
+    document.getElementById('victory').volume = 0.1;
     goods += Math.floor(monsters[fighting].level * 6.7);
     xp += monsters[fighting].level;
     goodsText.innerText = goods;
@@ -306,7 +326,8 @@ button3.onclick = goYurt;
   function winGame() {
     update(locations[6]);
     document.getElementById('windSounds').pause();
-    document.getElementById('yayaBeySnippet').play();
+    const yaya = document.getElementById('yayaBeySnippet').play();
+    document.getElementById('yayaBeySnippet').volume = 0.2;
     const winImg = document.getElementById('win-img');
     leader.src = "https://preview.redd.it/what-is-rataus-history-with-his-cult-and-ratoo-v0-au38e19g4zjc1.gif?width=360&auto=webp&s=c8bbc859a9ce2851b0d5f699c0eb9a8f4f011b00";
     follower1.src = "https://preview.redd.it/patch-notes-1-1-5-v0-f8awrb2dfcsa1.gif?width=194&auto=webp&s=34ea76918584d5b33804319d1ec59a0bf9b48914";
