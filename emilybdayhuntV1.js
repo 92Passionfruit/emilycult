@@ -61,7 +61,7 @@ const locations = [
     {
       name: "truth",
       "button text": ["Fight independent thought", "Fight society", "Return to your yurt"],
-      "button functions": [fightThought, winGame, goYurt],
+      "button functions": [fightThought, fightSociety, goYurt],
       text: "You follow your truth, but it won't come easily."
     },
     {
