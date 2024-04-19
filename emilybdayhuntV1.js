@@ -1,4 +1,4 @@
-alert("Please turn your audio up, baby 🥰");
+alert("Please turn your volume up.");
 
 let xp = 0;
 let health = 100;
